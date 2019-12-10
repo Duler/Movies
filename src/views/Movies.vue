@@ -1,14 +1,28 @@
 <template>
   <div class="container">
         
-            <h2 class="mt-5">Movies</h2>
-        
-      </div>
+      <h2 class="mt-5">Movies</h2>
+       <ul>
+             <li v-for="movie in movies" :key="movie.id">
+                   {{ movie.title }}
+            </li> 
+</div>
 </template>
 
 <script>
+import store from './../store'
 export default {
-
+      computed: {
+            movies() {
+                  return store.state.movies
+            }
+      },
+      beforeRouteEnter(to, from, next) {
+            store.dispatch('fetchMovies').then(() => {
+                  next() 
+            })
+            
+      }
 }
 </script>
 

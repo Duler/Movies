@@ -21,6 +21,10 @@ class MoviesServices {
         )
         
     }
+    getAll() {
+        return axios.get('/movies')
+    }
 }
+
 
 export const moviesServices = new MoviesServices()
