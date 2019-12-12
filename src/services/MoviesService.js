@@ -1,28 +1,13 @@
 
-import axios from 'axios'
 
-const BASE_URL = 'http://localhost:3000/api'
-class MoviesServices {
-    constructor() {
-        this.configureAxios(
-            BASE_URL,
-            {
-                accept: 'application/json',
-                authoriyation: `Bearer ${localStorage.getItem('token')}`
-            }
-        )
-    }
+import { HttpServices } from './HttpService'
 
-    configureAxios(baseUrl, headers = {}) {
-        axios.defaults.baseURL = baseUrl
-        Object.assign(
-            axios.defaults.headers.common,
-            headers
-        )
-        
-    }
+
+
+class MoviesServices extends HttpServices {    
+    
     getAll() {
-        return axios.get('/movies')
+        return this.axios.get('/movies')
     }
 }
 
