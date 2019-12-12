@@ -26,7 +26,11 @@ export const AuthStore = {
                 context.commit('setErrors', exeption)
             }
             
-        }
+        },
+        logout(context) {
+            context.commit('setToken', null)
+            localStorage.removeItem('token')
+        },
     },
     getters: {
         isUserAuthenticated(state) {

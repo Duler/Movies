@@ -11,22 +11,45 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" >
             <a class="nav-link" href="#">Link</a>
           </li>
         </ul>
       <movies-search />
+      <li class="nav-item" v-if="isUserAuthenticated">
+          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"
+          @click="onLogout">
+            Logout</button>
+        </li>
     </div>
   </nav>
 </header>
 </template>
 
 <script>
+import {mapActions, mapGetters } from 'vuex'
 import MoviesSearch from './../MoviesSearch'
 
 export default {
   components: {
     MoviesSearch
+  },
+  computed: {
+    ...mapGetters({
+      isUserAuthenticated: 'isUserAuthenticated'
+    })
+    
+  },
+  methods: {
+    ...mapActions({
+      logout: 'logout'
+    }),
+    onLogout() {
+      this.logout()
+      this.$router.push({
+        name: 'logout'
+      }) 
+    }
   }
 }
 </script>
