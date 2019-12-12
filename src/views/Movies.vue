@@ -11,12 +11,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import store from './../store'
+
+
 export default {
       computed: {
-            movies() {
-                  return store.getters.filterMovies
-            }
+            //movies() {
+            //      return store.getters.filterMovies
+            //}
+            ...mapGetters({
+                  movies: 'filterMovies'
+            })
       },
       beforeRouteEnter(to, from, next) {
             store.dispatch('fetchMovies').then(() => {

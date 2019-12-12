@@ -27,4 +27,4 @@ class MoviesServices {
 }
 
 
-export const moviesServices = new MoviesServices()
+export const moviesService = new MoviesServices()
