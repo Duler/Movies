@@ -6,6 +6,7 @@
              <li v-for="movie in movies" :key="movie.id">
                    {{ movie.title }}
             </li> 
+       </ul>
 </div>
 </template>
 
@@ -14,7 +15,7 @@ import store from './../store'
 export default {
       computed: {
             movies() {
-                  return store.state.movies
+                  return store.getters.filterMovies
             }
       },
       beforeRouteEnter(to, from, next) {
